@@ -1,0 +1,193 @@
+What is SQL?
+mysql> #SQL is querying language aimed to manage Relational Databases.
+mysql> #SQL programming can be used to perform multiple actions on data such as       1.Quering 2.Inserting 3.Updating 4.Deleting 5.Extracting.
+mysql>
+mysql> #Why we use SQL
+mysql> => It is open source, support large databases,Customizable.
+    -> SQL is faster and relibale because we can extract that much amount of information which we need actually for the analysis so we overcome the memory loss problem. and it is relible because it stores data in various data files.
+    -> Data Types
+    -> ***Numeric
+    -> (INT,FLOAT,DECIMAL,REAL)
+    -> ***Character-string
+    -> (CAHR(n),VARCHAR(n),CLOB
+    -> ***Boolean
+    -> (TRUE,FALSE,UNKNOWN)
+    -> ***Data and Time
+    -> (DATE, TIME)
+    
+    Create database called bikes
+    syntax: CREATE DATABASE bikes;
+    
+    Use that database for further process 
+    syntax: USE bikes;
+    
+    Now we have to create tables in the database 
+     syntax:
+    CREATE TABLE bikes(
+    -> id int unsigned NOT NULL auto_increment,
+    -> bikename varchar(50) NOT NULL,
+    -> fuel_type varchar(10) NOT NULL,
+    -> avarage int(100),
+    -> PRIMARY KEY(id));
+    
+    Here we define primary key (id) because it has unique values.
+    #varchar means the length of character.
+    
+    
+    Now do some opration on data 
+    
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| abcd               |
+| cars               |
+| demo1              |
+| fake               |
+| information_schema |
+| ipl                |
+| mydb               |
+| mysql              |
+| performance_schema |
+| practice           |
+| sakila             |
+| sys                |
+| world              |
++--------------------+
+13 rows in set (0.00 sec)
+
+mysql> use fake;      #we used fake database for practice purpose  
+Database changed
+mysql> show tables;
++----------------+
+| Tables_in_fake |
++----------------+
+| bikes          |
++----------------+
+1 row in set (0.00 sec)
+
+####  WE HAVE ALREADY CREATED TABLES IN BIKES SO WE DO ENTER VALUES IN IT AS FOLLOWS  
+
+mysql> INSERT INTO bikes(bikename,fuel_type,avarage)
+    -> values("NS200","Petrol","42");
+Query OK, 1 row affected (0.40 sec)
+
+mysql> select * from bikes;
++----+----------+-----------+---------+
+| id | bikename | fuel_type | avarage |
++----+----------+-----------+---------+
+|  1 | NS200    | Petrol    |      42 |
++----+----------+-----------+---------+
+1 row in set (0.03 sec)
+
+mysql> INSERT INTO bikes(bikename,fuel_type,avarage)
+    -> values("FZ","Petrol","48");
+Query OK, 1 row affected (0.08 sec)
+
+mysql> INSERT INTO bikes(bikename,fuel_type,avarage)
+    -> values("RE","Petrol","40");
+Query OK, 1 row affected (0.11 sec)
+
+mysql> select * from bikes;
++----+----------+-----------+---------+
+| id | bikename | fuel_type | avarage |
++----+----------+-----------+---------+
+|  1 | NS200    | Petrol    |      42 |
+|  2 | FZ       | Petrol    |      48 |
+|  3 | RE       | Petrol    |      40 |
++----+----------+-----------+---------+
+3 rows in set (0.00 sec)
+
+
+#### WHEN WE WANT TO CHANGE SOME VALUE OR UPDATE ANY VALUE WE USE UPDATE SYNTAX 
+
+mysql> UPDATE bikes SET avarage = "30" WHERE id = 1;      
+Query OK, 1 row affected (0.10 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from bikes;
++----+----------+-----------+---------+
+| id | bikename | fuel_type | avarage |
++----+----------+-----------+---------+
+|  1 | NS200    | Petrol    |      30 |
+|  2 | FZ       | Petrol    |      48 |
+|  3 | RE       | Petrol    |      40 |
++----+----------+-----------+---------+
+3 rows in set (0.04 sec)
+
+WE WANT TO ADD OR DROP SOME COLUMNS THEN WE USE ALTER SYNTAX IN SQL
+
+mysql> Select * from bikes;
++----+----------+-----------+---------+
+| id | bikename | fuel_type | avarage |
++----+----------+-----------+---------+
+|  1 | NS200    | Petrol    |      30 |
+|  2 | FZ       | Petrol    |      48 |
+|  3 | RE       | Petrol    |      40 |
++----+----------+-----------+---------+
+3 rows in set (0.00 sec)
+
+mysql> alter table bikes
+    -> add color varchar(20) not null
+    -> after fuel_type,
+    -> add comfart varchar(10) not null
+    -> after avarage;
+Query OK, 0 rows affected (2.92 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select * from bikes;           ##### WEADD COLOR AND COMFART COLUMN.
++----+----------+-----------+-------+---------+---------+
+| id | bikename | fuel_type | color | avarage | comfart |
++----+----------+-----------+-------+---------+---------+
+|  1 | NS200    | Petrol    |       |      30 |         |
+|  2 | FZ       | Petrol    |       |      48 |         |
+|  3 | RE       | Petrol    |       |      40 |         |
++----+----------+-----------+-------+---------+---------+
+3 rows in set (0.00 sec)
+
+    
+    
+    
+mysql> alter table bikes                  ###### we Drop the color column by using drop syntax
+    -> drop color;
+Query OK, 0 rows affected (2.27 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select * from bikes;   
++----+----------+-----------+---------+---------+
+| id | bikename | fuel_type | avarage | comfart |
++----+----------+-----------+---------+---------+
+|  1 | NS200    | Petrol    |      30 |         |
+|  2 | FZ       | Petrol    |      48 |         |
+|  3 | RE       | Petrol    |      40 |         |
++----+----------+-----------+---------+---------+
+3 rows in set (0.00 sec)  
+    
+    
+ mysql> alter table bikes                          ####### Rename the column comfart to seating_comfart
+    -> change comfart Seating_comfart varchar(20) not null;
+Query OK, 0 rows affected (0.52 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select * from bikes;
++----+----------+-----------+---------+-----------------+
+| id | bikename | fuel_type | avarage | Seating_comfart |
++----+----------+-----------+---------+-----------------+
+|  1 | NS200    | Petrol    |      30 |                 |
+|  2 | FZ       | Petrol    |      48 |                 |
+|  3 | RE       | Petrol    |      40 |                 |
++----+----------+-----------+---------+-----------------+
+3 rows in set (0.04 sec)
+   
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
