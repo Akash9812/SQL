@@ -192,12 +192,43 @@ mysql> select * from bikes;
 3 rows in set (0.04 sec)
    
     
+IMPORTING ANOTHER DATASET CALLED ATTRIION
+
+    mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| abcd               |
+| attrition          |
+| cars               |
+| demo1              |
+| fake               |
+| information_schema |
+| ipl                |
+| mydb               |
+| mysql              |
+| performance_schema |
+| practice           |
+| sakila             |
+| sys                |
+| world              |
++--------------------+
+14 rows in set (0.00 sec)
+
+mysql> use attrition;
+Database changed
+mysql> select * from attrition01;
     
-    
-    
-    
-    
-    
+WHEN WE WANT TO KNOW ANY PERTICULAR COLUMN CONTAIN HOW MANY UNIQUE VALUE THEN WE USE DISTINCT FUNCTION.
+
+mysql> select distinct BusinessTravel from attrition01;   #### Here BusinessTravel column has three categories 
++-------------------+
+| BusinessTravel    |
++-------------------+
+| Travel_Rarely     |
+| Travel_Frequently |
+| Non-Travel        |
++-------------------+
     
     
     
