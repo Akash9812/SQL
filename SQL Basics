@@ -1,19 +1,31 @@
 What is SQL?
-mysql> #SQL is querying language aimed to manage Relational Databases.
-mysql> #SQL programming can be used to perform multiple actions on data such as       1.Quering 2.Inserting 3.Updating 4.Deleting 5.Extracting.
-mysql>
-mysql> #Why we use SQL
-mysql> => It is open source, support large databases,Customizable.
-    -> SQL is faster and relibale because we can extract that much amount of information which we need actually for the analysis so we overcome the memory loss problem. and it is relible because it stores data in various data files.
-    -> Data Types
+SQL is querying language aimed to manage Relational Databases
+
+SQL programming can be used to perform multiple actions on data such as       
+1.Quering 2.Inserting 3.Updating 4.Deleting 5.Extracting.
+
+
+Why we use SQL
+=> It is open source, support large databases,Customizable.
+   SQL is faster and relibale because we can extract that much
+   amount of information which we actually need for the analysis so we overcome the memory loss problem. 
+   and it is relible because it stores data in various data files.
+    
+    
+    Data Types
     -> ***Numeric
     -> (INT,FLOAT,DECIMAL,REAL)
+    
     -> ***Character-string
     -> (CAHR(n),VARCHAR(n),CLOB
-    -> ***Boolean
+   
+   -> ***Boolean
     -> (TRUE,FALSE,UNKNOWN)
-    -> ***Data and Time
+   
+   -> ***Data and Time
     -> (DATE, TIME)
+ ====================================================   
+    
     
     Create database called bikes
     syntax: CREATE DATABASE bikes;
