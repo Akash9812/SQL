@@ -5,36 +5,33 @@ SQL programming can be used to perform multiple actions on data such as
 1.Quering 2.Inserting 3.Updating 4.Deleting 5.Extracting.
 
 
-Why we use SQL
-=> It is open source, support large databases,Customizable.
-   SQL is faster and relibale because we can extract that much
-   amount of information which we actually need for the analysis so we overcome the memory loss problem. 
-   and it is relible because it stores data in various data files.
+=> Why we use SQL
+It is open source, support large databases,Customizable.
+SQL is faster and relibale because we can extract that much
+amount of information which we actually need for the analysis so we overcome the memory loss problem. 
+and it is relible because it stores data in various data files.
     
     
-    Data Types
-    -> ***Numeric
-    -> (INT,FLOAT,DECIMAL,REAL)
+Data Types
+Numeric -> (INT,FLOAT,DECIMAL,REAL)
     
-    -> ***Character-string
-    -> (CAHR(n),VARCHAR(n),CLOB
+Character-string -> (CAHR(n),VARCHAR(n),CLOB
    
-   -> ***Boolean
-    -> (TRUE,FALSE,UNKNOWN)
+Boolean -> (TRUE,FALSE,UNKNOWN)
    
-   -> ***Data and Time
-    -> (DATE, TIME)
- ====================================================   
+Data and Time -> (DATE, TIME)
+ 
+====================================================   
+ NOW WE MOVE FORWARD TO DO SOME OPERATIONS   
     
+ Create database called bikes
+ syntax: CREATE DATABASE bikes;
     
-    Create database called bikes
-    syntax: CREATE DATABASE bikes;
+ Use that database for further process 
+ syntax: USE bikes;
     
-    Use that database for further process 
-    syntax: USE bikes;
-    
-    Now we have to create tables in the database 
-     syntax:
+ Now we have to create tables in the database 
+ syntax:
     CREATE TABLE bikes(
     -> id int unsigned NOT NULL auto_increment,
     -> bikename varchar(50) NOT NULL,
@@ -42,11 +39,9 @@ Why we use SQL
     -> avarage int(100),
     -> PRIMARY KEY(id));
     
-    Here we define primary key (id) because it has unique values.
-    #varchar means the length of character.
+ Here we define primary key (id) because it has unique values.
+ #varchar means the length of character.
     
-    
-    Now do some opration on data 
     
 mysql> show databases;
 +--------------------+
@@ -68,7 +63,9 @@ mysql> show databases;
 +--------------------+
 13 rows in set (0.00 sec)
 
-mysql> use fake;      #we used fake database for practice purpose  
+WE USE DATABASES WHICH IS ALREADY CREATED
+
+mysql> use fake;       
 Database changed
 mysql> show tables;
 +----------------+
@@ -76,9 +73,9 @@ mysql> show tables;
 +----------------+
 | bikes          |
 +----------------+
-1 row in set (0.00 sec)
 
-####  WE HAVE ALREADY CREATED TABLES IN BIKES SO WE DO ENTER VALUES IN IT AS FOLLOWS  
+
+WE HAVE ALREADY CREATED TABLES IN BIKES SO WE DO ENTER VALUES IN IT AS FOLLOWS  
 
 mysql> INSERT INTO bikes(bikename,fuel_type,avarage)
     -> values("NS200","Petrol","42");
@@ -111,7 +108,7 @@ mysql> select * from bikes;
 3 rows in set (0.00 sec)
 
 
-#### WHEN WE WANT TO CHANGE SOME VALUE OR UPDATE ANY VALUE WE USE UPDATE SYNTAX 
+WHEN WE WANT TO CHANGE SOME VALUE OR UPDATE ANY VALUE WE USE UPDATE SYNTAX 
 
 mysql> UPDATE bikes SET avarage = "30" WHERE id = 1;      
 Query OK, 1 row affected (0.10 sec)
@@ -147,7 +144,9 @@ mysql> alter table bikes
 Query OK, 0 rows affected (2.92 sec)
 Records: 0  Duplicates: 0  Warnings: 0
 
-mysql> select * from bikes;           ##### WEADD COLOR AND COMFART COLUMN.
+WE ADD COLOR AND COMFART COLUMN.
+
+mysql> select * from bikes;            
 +----+----------+-----------+-------+---------+---------+
 | id | bikename | fuel_type | color | avarage | comfart |
 +----+----------+-----------+-------+---------+---------+
@@ -158,9 +157,9 @@ mysql> select * from bikes;           ##### WEADD COLOR AND COMFART COLUMN.
 3 rows in set (0.00 sec)
 
     
+WE DROP THE COLOR COLUMN BY USING DROP SYNTAX    
     
-    
-mysql> alter table bikes                  ###### we Drop the color column by using drop syntax
+mysql> alter table bikes                
     -> drop color;
 Query OK, 0 rows affected (2.27 sec)
 Records: 0  Duplicates: 0  Warnings: 0
@@ -175,8 +174,9 @@ mysql> select * from bikes;
 +----+----------+-----------+---------+---------+
 3 rows in set (0.00 sec)  
     
+RENAME THE COLUMN comfart to seating_comfart    
     
- mysql> alter table bikes                          ####### Rename the column comfart to seating_comfart
+ mysql> alter table bikes                        
     -> change comfart Seating_comfart varchar(20) not null;
 Query OK, 0 rows affected (0.52 sec)
 Records: 0  Duplicates: 0  Warnings: 0
