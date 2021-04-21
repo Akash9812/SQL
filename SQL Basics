@@ -229,8 +229,116 @@ mysql> select distinct BusinessTravel from attrition01;   #### Here BusinessTrav
 | Travel_Frequently |
 | Non-Travel        |
 +-------------------+
-    
-    
-    
-    
-    
+====================================================================================================================
+NOW WE SEE SOME INTERESTING PART IN SQL WHICH IS JOIN.
+
+JOINS IN SQL
+
+INNER JOIN : returns rows when there is a match in both tables.
+LEFT JOIN  : returns all rows from the left table, even if there are no matches in the right table.
+RIGHT JOIN : returns all rows from the right table, even if there are no matches in the left table    
+FULL OUTER JOIN: The FULL OUTER JOIN keyword returns all records when there is a match in left (table1) 
+                 or right (table2) table records.
+                 
+                 
+WE SEE ONE BY ONE BY DOING SIMPLE OPERATION.
+
+mysql> select*from student;
++---------+--------+---------+-------+
+| roll_no | name   | sub     | grade |
++---------+--------+---------+-------+
+|       1 | ram    | eng     | A     |
+|       2 | sham   | hindi   | A     |
+|       3 | som    | hindi   | A     |
+|       4 | ravi   | marathi | B     |
+|       5 | dipak  | hindi   | A     |
+|       6 | mahesh | maths   | C     |
++---------+--------+---------+-------+
+6 rows in set (0.00 sec)
+
+mysql> select*from students1;
++---------+--------+-----------+-------+
+| roll_no | name   | sub       | grade |
++---------+--------+-----------+-------+
+|       1 | sanket | stat      | A     |
+|       2 | shrya  | mvs       | B     |
+|       3 | vijay  | infarence | C     |
+|       4 | akash  | maths     | c     |
+|       5 | akshay | hindi     | B     |
+|       6 | viraj  | marathi   | B     |
++---------+--------+-----------+-------+
+6 rows in set (0.00 sec)
+
+WE TAKE INNER JOIN PERFORM ON BOTH THE DATASETS STUDENTS1 AND STUDENT
+
+=> INNER JOIN 
+
+WE SEE WHICH RECORD SATISFYING THE CONDITION THAT RECORDS ARE RECORED IN THE TABLE.
+
+mysql> select * from student
+    -> INNER JOIN students1
+    -> on student.sub = students1.sub;
++---------+--------+---------+-------+---------+--------+---------+-------+
+| roll_no | name   | sub     | grade | roll_no | name   | sub     | grade |
++---------+--------+---------+-------+---------+--------+---------+-------+
+|       6 | mahesh | maths   | C     |       4 | akash  | maths   | c     |
+|       5 | dipak  | hindi   | A     |       5 | akshay | hindi   | B     |
+|       3 | som    | hindi   | A     |       5 | akshay | hindi   | B     |
+|       2 | sham   | hindi   | A     |       5 | akshay | hindi   | B     |
+|       4 | ravi   | marathi | B     |       6 | viraj  | marathi | B     |
++---------+--------+---------+-------+---------+--------+---------+-------+
+
+
+=> RIGHT JOINT 
+
+HERE WE GET ALL RECORDS FROM RIGHT TABLE(STUDENTS1) AND SOME OF THE RECORED FROM LEFT TABLE (STUDENT) WHICH ARE SAME OR WE SAY THAT THESE RECORDS SATISFYING THE CONDITION 
+AND NULL VALUES REPRESNTS THESE RECOREDS WERE NOT SATISFIED THE CONDITION.
+
+mysql> select * from student
+    -> RIGHT JOIN students1
+    -> on student.sub = students1.sub;
++---------+--------+---------+-------+---------+--------+-----------+-------+
+| roll_no | name   | sub     | grade | roll_no | name   | sub       | grade |
++---------+--------+---------+-------+---------+--------+-----------+-------+
+|    NULL | NULL   | NULL    | NULL  |       1 | sanket | stat      | A     |
+|    NULL | NULL   | NULL    | NULL  |       2 | shrya  | mvs       | B     |
+|    NULL | NULL   | NULL    | NULL  |       3 | vijay  | infarence | C     |
+|       6 | mahesh | maths   | C     |       4 | akash  | maths     | c     |
+|       5 | dipak  | hindi   | A     |       5 | akshay | hindi     | B     |
+|       3 | som    | hindi   | A     |       5 | akshay | hindi     | B     |
+|       2 | sham   | hindi   | A     |       5 | akshay | hindi     | B     |
+|       4 | ravi   | marathi | B     |       6 | viraj  | marathi   | B     |
++---------+--------+---------+-------+---------+--------+-----------+-------+
+8 rows in set (0.00 sec)
+
+
+=> LEFT JOIN
+
+HERE WE GET ALL RECORDS FROM LEFT TABLE(STUDENT) AND SOME OF THE RECORED FROM RIGHT TABLE (STUDENTS1) WHICH ARE SAME OR WE SAY THAT THESE RECORDS SATISFYING THE CONDITION 
+AND NULL VALUES REPRESNTS THESE RECOREDS WERE NOT SATISFIED THE CONDITION.
+
+mysql> select * from student
+    -> LEFT JOIN students1
+    -> on student.sub = students1.sub;
++---------+--------+---------+-------+---------+--------+---------+-------+
+| roll_no | name   | sub     | grade | roll_no | name   | sub     | grade |
++---------+--------+---------+-------+---------+--------+---------+-------+
+|       1 | ram    | eng     | A     |    NULL | NULL   | NULL    | NULL  |
+|       2 | sham   | hindi   | A     |       5 | akshay | hindi   | B     |
+|       3 | som    | hindi   | A     |       5 | akshay | hindi   | B     |
+|       4 | ravi   | marathi | B     |       6 | viraj  | marathi | B     |
+|       5 | dipak  | hindi   | A     |       5 | akshay | hindi   | B     |
+|       6 | mahesh | maths   | C     |       4 | akash  | maths   | c     |
++---------+--------+---------+-------+---------+--------+---------+-------+
+
+
+
+
+
+
+
+
+
+
+
+
