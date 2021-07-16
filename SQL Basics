@@ -7,7 +7,7 @@ SQL programming can be used to perform multiple actions on data such as
 
 => Why we use SQL
 It is open source, support large databases,Customizable.
-SQL is faster and relibale because we can extract that much
+SQL is faster and reliable because we can extract that much
 amount of information which we actually need for the analysis so we overcome the memory loss problem. 
 and it is relible because it stores data in various data files.
     
