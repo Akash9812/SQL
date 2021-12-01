@@ -40,7 +40,7 @@ Data and Time -> (DATE, TIME)
     -> PRIMARY KEY(id));
     
  Here we define primary key (id) because it has unique values.
- #varchar means the length of character.
+ 
     
     
 mysql> show databases;
